@@ -4,13 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 
 public class Despesas {
 	
-	public Despesas(Integer valor, String dataPagamento, String dataPagamentoEsperado, String conta,
-			String tipoDespesa) {
+	public Despesas(Integer valor, String dataPagamento, String dataPagamentoEsperado, Conta conta,
+			TipoDespesa tipoDespesa) {
 		super();
 		this.valor = valor;
 		this.dataPagamento = dataPagamento;
@@ -24,8 +26,12 @@ public class Despesas {
 	private Integer valor;
 	private String dataPagamento;
 	private String dataPagamentoEsperado;
-	private String conta;
-	private String tipoDespesa;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_CONTA")
+	private Conta conta;
+	
+	private TipoDespesa tipoDespesa;
 
 	public Integer getValor() {
 		return valor;
@@ -48,17 +54,17 @@ public class Despesas {
 		this.dataPagamentoEsperado = dataPagamentoEsperado;
 	}
 
-	public String conta() {
+	public Conta conta() {
 		return conta;
 	}	
-	public void setConta(String conta) {
+	public void setConta(Conta conta) {
 		this.conta = conta;
 	}
 	
-	public String getTipoDespesa() {
+	public TipoDespesa getTipoDespesa() {
 		return tipoDespesa;
 	}	
-	public void setTipoDespesa(String tipoDespesa) {
+	public void setTipoDespesa(TipoDespesa tipoDespesa) {
 		this.tipoDespesa = tipoDespesa;
 	}
 }

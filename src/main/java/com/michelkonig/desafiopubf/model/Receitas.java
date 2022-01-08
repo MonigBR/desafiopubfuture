@@ -4,13 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 
 public class Receitas {
 	
 	public Receitas(Integer valor, String dataRecebimento, String dataRecebimentoEsperado, String descricao,
-			String conta, String tipoReceita) {
+			Conta conta, TipoReceita tipoReceita) {
 		super();
 		this.valor = valor;
 		this.dataRecebimento = dataRecebimento;
@@ -26,8 +28,12 @@ public class Receitas {
 	private String dataRecebimento;
 	private String dataRecebimentoEsperado;
 	private String descricao;
-	private String conta;
-	private String tipoReceita;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_CONTA")
+	private Conta conta;
+	
+	private TipoReceita tipoReceita;
 	
 	public Integer getValor() {
 		return valor;
@@ -57,17 +63,17 @@ public class Receitas {
 		this.descricao = descricao;
 	}
 	
-	public String getConta() {
+	public Conta getConta() {
 		return conta;
 	}	
-	public void setConta(String conta) {
+	public void setConta(Conta conta) {
 		this.conta = conta;
 	}
 	
-	public String getTipoReceita() {
+	public TipoReceita getTipoReceita() {
 		return tipoReceita;
 	}	
-	public void setTipoReceita(String tipoReceita) {
+	public void setTipoReceita(TipoReceita tipoReceita) {
 		this.tipoReceita = tipoReceita;
 	}
 }

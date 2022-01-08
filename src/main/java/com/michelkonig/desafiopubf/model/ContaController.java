@@ -20,22 +20,22 @@ public class ContaController {
 	ContaRepository repository;
 	
 	@GetMapping("/contamodel")
-	public List<ContaModel> getAllContaModel(){
-		return (List<ContaModel>) repository.findAll();
+	public List<Conta> getAllContaModel(){
+		return (List<Conta>) repository.findAll();
 	}
 	
-	@GetMapping("/contamodel/{id}")
-	public ContaModel getContaModelById(@PathVariable Long id) {
+	@GetMapping("/conta/{id}")
+	public Conta getContaById(@PathVariable Long id) {
 		return repository.findById(id).get();
 	}
 	
-	@PostMapping("/contamodel")
-	public ContaModel saveContaModel(@RequestBody ContaModel contamodel) {
-		return repository.save(contamodel);
+	@PostMapping("/conta")
+	public Conta saveConta(@RequestBody Conta conta) {
+		return repository.save(conta);
 	}
 	
-		@DeleteMapping("/contamodel/{id}")
-	public void deleteContaModel(@PathVariable Long id){
+		@DeleteMapping("/conta/{id}")
+	public void deleteConta(@PathVariable Long id){
 		repository.deleteById(id);
 	}
 	
