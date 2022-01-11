@@ -1,4 +1,4 @@
-package com.michelkonig.desafiopubf.model;
+package com.michelkonig.desafiopubf.controller;
 
 import java.util.List;
 
@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.michelkonig.desafiopubf.model.Conta;
+import com.michelkonig.desafiopubf.model.Despesas;
+import com.michelkonig.desafiopubf.model.Receitas;
+import com.michelkonig.desafiopubf.repository.ContaRepository;
+import com.michelkonig.desafiopubf.repository.DespesasRepository;
+import com.michelkonig.desafiopubf.repository.ReceitasRepository;
 
 @RestController
 public class ContaController {

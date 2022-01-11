@@ -1,4 +1,4 @@
-package com.michelkonig.desafiopubf.model;
+package com.michelkonig.desafiopubf.controller;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.michelkonig.desafiopubf.model.Receitas;
+import com.michelkonig.desafiopubf.repository.ReceitasRepository;
 
 @RestController
 public class ReceitasController {
