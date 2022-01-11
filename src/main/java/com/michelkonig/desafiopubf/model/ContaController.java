@@ -12,15 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ContaController {
 	
-	public ContaController(ContaRepository repository) {
-		super();
+	public ContaController(ContaRepository repository, DespesasRepository despesasRepository, ReceitasRepository receitasRepository) {
+
 		this.repository = repository;
+		this.despesasRepository = despesasRepository;
+		this.receitasRepository = receitasRepository;
 	}
 
 	ContaRepository repository;
+	DespesasRepository despesasRepository;
+	ReceitasRepository receitasRepository;
+
 	
-	@GetMapping("/contamodel")
-	public List<Conta> getAllContaModel(){
+	@GetMapping("/conta")
+	public List<Conta> getAllConta(){
 		return (List<Conta>) repository.findAll();
 	}
 	
@@ -34,11 +39,22 @@ public class ContaController {
 		return repository.save(conta);
 	}
 	
-		@DeleteMapping("/conta/{id}")
+	@DeleteMapping("/conta/{id}")
 	public void deleteConta(@PathVariable Long id){
 		repository.deleteById(id);
 	}
 	
+	@PostMapping("/conta/{id}/despesas")
+	public Despesas addDespesas(@PathVariable Long id, @RequestBody Despesas despesas) {
+		Conta conta = repository.findById(id).get();
+		despesas.setConta(conta);
+		return despesasRepository.save(despesas);
+	}
 	
-
+	@PostMapping("/conta/{id}/receitas")
+	public Receitas addReceitas(@PathVariable Long id, @RequestBody Receitas receitas) {
+		Conta conta = repository.findById(id).get();
+		receitas.setConta(conta);
+		return receitasRepository.save(receitas);
+	}
 }

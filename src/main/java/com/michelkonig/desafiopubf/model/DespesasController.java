@@ -5,21 +5,18 @@ import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("/despesas")
 public class DespesasController {
 	
 	public DespesasController(DespesasRepository repository) {
-		super();
 		this.repository = repository;
 	}
 
 	DespesasRepository repository;
 	
-	@GetMapping("despesas")
+	@GetMapping("/despesas")
 	public List<Despesas> getAllDespesas(){
 		return (List<Despesas>) repository.findAll();
 	}
@@ -29,13 +26,8 @@ public class DespesasController {
 		return repository.findById(id).get();
 	}
 	
-	@PostMapping("/despesas")
-	public Despesas savedespesas(@RequestBody Despesas despesas) {
-		return repository.save(despesas);
-	}
-	
-		@DeleteMapping("/despesas/{id}")
-	public void deleteDespesas(@PathVariable Long id){
+	@DeleteMapping("/despesas/{id}")
+	public void deleteDespesas(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
 	

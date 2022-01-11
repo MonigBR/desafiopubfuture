@@ -1,11 +1,15 @@
 package com.michelkonig.desafiopubf.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 
@@ -13,22 +17,25 @@ public class Despesas {
 	
 	public Despesas(Integer valor, String dataPagamento, String dataPagamentoEsperado, Conta conta,
 			TipoDespesa tipoDespesa) {
-		super();
 		this.valor = valor;
 		this.dataPagamento = dataPagamento;
 		this.dataPagamentoEsperado = dataPagamentoEsperado;
 		this.conta = conta;
 		this.tipoDespesa = tipoDespesa;
 	}
+	
+	public Despesas() {}
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer valor;
 	private String dataPagamento;
 	private String dataPagamentoEsperado;
 	
-	@ManyToOne
-	@JoinColumn(name="ID_CONTA")
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_CONTA", nullable= false) 
 	private Conta conta;
 	
 	private TipoDespesa tipoDespesa;
@@ -54,7 +61,7 @@ public class Despesas {
 		this.dataPagamentoEsperado = dataPagamentoEsperado;
 	}
 
-	public Conta conta() {
+	public Conta getConta() {
 		return conta;
 	}	
 	public void setConta(Conta conta) {

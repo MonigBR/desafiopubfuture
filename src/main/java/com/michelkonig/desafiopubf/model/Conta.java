@@ -2,41 +2,46 @@ package com.michelkonig.desafiopubf.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "Conta")
 public class Conta {
 	
-	public Conta(Integer saldo, TipoConta tipoconta, String instituicaoFinanceira, List<Receitas> receitas,
+	public Conta(Long id, Integer saldo, TipoConta tipoConta, String instituicaoFinanceira, List<Receitas> receitas,
 			List<Despesas> despesas) {
-		super();
+
+		this.id = id;
 		this.saldo = saldo;
-		this.tipoconta = tipoconta;
+		this.tipoConta = tipoConta;
 		this.instituicaoFinanceira = instituicaoFinanceira;
 		this.receitas = receitas;
 		this.despesas = despesas;
 	}
 
+	public Conta() {}
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer saldo;
-	private TipoConta tipoconta;
+	private TipoConta tipoConta;
 	private String instituicaoFinanceira;
 	
-	@OneToMany
-	@JoinColumn(name="ID_CONTA")
+	@JsonManagedReference
+	@OneToMany(mappedBy= "conta", cascade= CascadeType.ALL)
 	private List<Receitas> receitas;
 	
-	@OneToMany
-	@JoinColumn(name="ID_CONTA")
+	@JsonManagedReference
+	@OneToMany(mappedBy= "conta", cascade= CascadeType.ALL)
 	private List<Despesas> despesas;
 	
 	public Integer getSaldo() {
@@ -46,11 +51,11 @@ public class Conta {
 		this.saldo = saldo;
 	}
 	
-	public TipoConta getTipoconta() {
-		return tipoconta;
+	public TipoConta getTipoConta() {
+		return tipoConta;
 	}
-	public void setTipoconta(TipoConta tipoconta) {
-		this.tipoconta = tipoconta;
+	public void setTipoConta(TipoConta tipoConta) {
+		this.tipoConta = tipoConta;
 	}
 	
 	public String getInstituicaoFinanceira() {

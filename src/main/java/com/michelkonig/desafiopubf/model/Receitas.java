@@ -1,11 +1,15 @@
 package com.michelkonig.desafiopubf.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 
@@ -13,7 +17,6 @@ public class Receitas {
 	
 	public Receitas(Integer valor, String dataRecebimento, String dataRecebimentoEsperado, String descricao,
 			Conta conta, TipoReceita tipoReceita) {
-		super();
 		this.valor = valor;
 		this.dataRecebimento = dataRecebimento;
 		this.dataRecebimentoEsperado = dataRecebimentoEsperado;
@@ -21,16 +24,20 @@ public class Receitas {
 		this.conta = conta;
 		this.tipoReceita = tipoReceita;
 	}
+	
+	public Receitas() {}
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer valor;
 	private String dataRecebimento;
 	private String dataRecebimentoEsperado;
 	private String descricao;
 	
-	@ManyToOne
-	@JoinColumn(name="ID_CONTA")
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_CONTA", referencedColumnName= "id" ) 
 	private Conta conta;
 	
 	private TipoReceita tipoReceita;
