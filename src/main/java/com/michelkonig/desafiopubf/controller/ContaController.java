@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.michelkonig.desafiopubf.model.Conta;
@@ -120,4 +121,30 @@ public class ContaController {
 		receitas.setConta(conta);
 		return receitasRepository.save(receitas);
 	}
+	
+	@GetMapping("/conta/buscarTotalSaldoDeUmaConta")
+	public Double findByTotalSaldoDeUmaConta(@RequestParam("id_conta") Long id_Conta) {	
+		Conta conta = this.repository.findById(id_Conta).get();
+		
+		List<Receitas> listaReceitas = this.receitasRepository.findByConta(conta);
+		List<Despesas> listaDespesas = this.despesasRepository.findByConta(conta);
+		
+		Double totalDespesas = 0.0;
+		Double totalReceitas = 0.0;
+		
+		for (Receitas receitas : listaReceitas) {
+			totalReceitas = totalReceitas + receitas.getValorReceita();
+		}
+		
+		for (Despesas despesas : listaDespesas) {
+			totalDespesas= totalDespesas + despesas.getValorDespesa();
+		}
+		
+		Double totalSaldo = conta.getSaldo() + totalReceitas - totalDespesas;
+		
+		return totalSaldo;
+	}
+	
+	
+	
 }

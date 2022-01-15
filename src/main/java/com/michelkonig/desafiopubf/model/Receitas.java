@@ -2,7 +2,6 @@ package com.michelkonig.desafiopubf.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -55,7 +54,7 @@ public class Receitas {
 	private String descricao;
 	
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_CONTA", referencedColumnName= "id" ) 
 	private Conta conta;
 	
