@@ -1,6 +1,6 @@
 package com.michelkonig.desafiopubf.enumeration;
 
-/** Classe TipoConta, onde constam os tipos de contas utilizadas.
+/** Enum TipoConta, onde constam os tipos de contas utilizadas.
  * 
  * @author Michel Konig
  *

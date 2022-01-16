@@ -17,7 +17,7 @@ import com.michelkonig.desafiopubf.repository.ContaRepository;
 import com.michelkonig.desafiopubf.repository.DespesasRepository;
 import com.michelkonig.desafiopubf.repository.ReceitasRepository;
 
-/** Classe ContaController, onde serão contidos os parâmetros e métodos para o mesmo.
+/** Classe Controller da entidade Conta.
  * 
  * @author Michel Konig
  *
@@ -25,13 +25,6 @@ import com.michelkonig.desafiopubf.repository.ReceitasRepository;
 @RestController
 public class ContaController {
 
-/** Parâmetros que compõem a Classe ContaController:
- * 	
- * @param repository ContaRepository - Repositório de contas;
- * @param despesasRepository DespesasRepository - Repositório de despesas;
- * @param receitasRepository ReceitasRepository - Repositório de receitas.
- * 
- */
 	public ContaController(ContaRepository repository, DespesasRepository despesasRepository, ReceitasRepository receitasRepository) {
 
 		this.repository = repository;
@@ -43,34 +36,16 @@ public class ContaController {
 	DespesasRepository despesasRepository;
 	ReceitasRepository receitasRepository;
 	
-
-/**
- * 
- * @return
- * 
- */
 	@GetMapping("/conta")
 	public List<Conta> getAllConta(){
 		return (List<Conta>) repository.findAll();
 	}
-	
-/**
- * 	
- * @param id
- * @return
- * 
- */
+
 	@GetMapping("/conta/{id}")
 	public Conta getContaById(@PathVariable Long id) {
 		return repository.findById(id).get();
 	}
-	
-/**
- * 	
- * @param conta
- * @return
- * 
- */
+
 	@PostMapping("/conta")
 	public Conta saveConta(@RequestBody Conta conta) {
 		return repository.save(conta);
@@ -94,13 +69,12 @@ public class ContaController {
 		return repository.save(conta);
 	}
 	
-/**
- * 	
- * @param id
- * @param despesas
- * @return
- * 
- */
+	/** Método para adição de uma despesa em uma conta
+	 * 
+	 * @param id - id da conta
+	 * @param despesas - objeto Despesas
+	 * @return despesa adicionada
+	 */
 	@PostMapping("/conta/{id}/despesas")
 	public Despesas addDespesas(@PathVariable Long id, @RequestBody Despesas despesas) {
 		Conta conta = repository.findById(id).get();
@@ -108,13 +82,12 @@ public class ContaController {
 		return despesasRepository.save(despesas);
 	}
 	
-/**
- * 	
- * @param id
- * @param receitas
- * @return
- * 
- */
+	/** Método para adição de uma receita em uma conta
+	 * 
+	 * @param id - id da conta
+	 * @param receitas - objeto Receitas
+	 * @return receita adicionada
+	 */
 	@PostMapping("/conta/{id}/receitas")
 	public Receitas addReceitas(@PathVariable Long id, @RequestBody Receitas receitas) {
 		Conta conta = repository.findById(id).get();
@@ -122,6 +95,11 @@ public class ContaController {
 		return receitasRepository.save(receitas);
 	}
 	
+	/** Método para a buscar o saldo total de uma conta
+	 * 
+	 * @param id_Conta - id da conta
+	 * @return saldo total de uma conta
+	 */
 	@GetMapping("/conta/buscarTotalSaldoDeUmaConta")
 	public Double findByTotalSaldoDeUmaConta(@RequestParam("id_conta") Long id_Conta) {	
 		Conta conta = this.repository.findById(id_Conta).get();

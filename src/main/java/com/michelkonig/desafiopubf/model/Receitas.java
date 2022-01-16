@@ -20,19 +20,18 @@ import com.michelkonig.desafiopubf.enumeration.TipoReceita;
  *
  */
 @Entity
-
 public class Receitas {
 	
-/**	Parâmetros que compõem a Classe Receitas:
- * 	
- * @param valorReceita double - Valor da receita;
- * @param dataRecebimento date - Data de recebimento realizado referente a receita;
- * @param dataRecebimentoEsperado date - Data limite de recebimento esperado referente a receita; 
- * @param descricao String - Descrição da receita recebida;
- * @param conta Conta - Conta na qual a despesa está vinculada;
- * @param tipoReceita TipoReceita - Tipo de despesa paga.
- * 
- */
+	/**	Parâmetros que compõem a Classe Receitas:
+	 * 	
+	 * @param valorReceita double - Valor da receita;
+	 * @param dataRecebimento date - Data de recebimento realizado referente a receita;
+	 * @param dataRecebimentoEsperado date - Data limite de recebimento esperado referente a receita; 
+	 * @param descricao String - Descrição da receita recebida;
+	 * @param conta Conta - Conta na qual a despesa está vinculada;
+	 * @param tipoReceita TipoReceita - Tipo de despesa paga.
+	 * 
+	 */
 	public Receitas(Double valorReceita, Date dataRecebimento, Date dataRecebimentoEsperado, String descricao,
 			Conta conta, TipoReceita tipoReceita) {
 		this.valorReceita = valorReceita;
@@ -60,11 +59,11 @@ public class Receitas {
 	
 	private TipoReceita tipoReceita;
 	
-/** Método para retorno do valorReceita da receita.
- * 
- * @return Double - O valorReceita referente a receita.
- * 
- */
+	/** Método para retorno do valorReceita da receita.
+	 * 
+	 * @return Double - O valorReceita referente a receita.
+	 * 
+	 */
 	public Double getValorReceita() {
 		return valorReceita;
 	}
@@ -72,11 +71,11 @@ public class Receitas {
 		this.valorReceita = valorReceita;
 	}
 	
-/** Método para retorno da data de recebimento da receita.
- * 
- * @return date - A data em que foi feito o recebimento da referida receita.
- * 
- */
+	/** Método para retorno da data de recebimento da receita.
+	 * 
+	 * @return date - A data em que foi feito o recebimento da referida receita.
+	 * 
+	 */
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone="Europe/Ireland")
 	public Date getDataRecebimento() {
 		return dataRecebimento;
@@ -85,11 +84,11 @@ public class Receitas {
 		this.dataRecebimento = dataRecebimento;
 	}
 
-/** Método para retorno da data de recebimento esperado da receita.
- * 
- * @return date - A data de recebimento esperada para a referida receita (data de vencimento).
- * 
- */
+	/** Método para retorno da data de recebimento esperado da receita.
+	 * 
+	 * @return date - A data de recebimento esperada para a referida receita (data de vencimento).
+	 * 
+	 */
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone="Europe/Ireland")
 	public Date getDataRecebimentoEsperado() {
 		return dataRecebimentoEsperado;
@@ -98,11 +97,11 @@ public class Receitas {
 		this.dataRecebimentoEsperado = dataRecebimentoEsperado;
 	}
 		
-/** Método para retorno da descrição da receita.
- * 	
- * @return Sring - Descrição da receita recebida na conta do usuário.
- * 
- */
+	/** Método para retorno da descrição da receita.
+	 * 	
+	 * @return Sring - Descrição da receita recebida na conta do usuário.
+	 * 
+	 */
 	public String getDescricao() {
 		return descricao;
 	}	
@@ -110,11 +109,11 @@ public class Receitas {
 		this.descricao = descricao;
 	}
 
-/** Método para retorno da conta.
- * 
- * @return Conta - Conta na qual a receita está vinculada.
- * 
- */
+	/** Método para retorno da conta.
+	 * 
+	 * @return Conta - Conta na qual a receita está vinculada.
+	 * 
+	 */
 	public Conta getConta() {
 		return conta;
 	}	
@@ -122,15 +121,14 @@ public class Receitas {
 		this.conta = conta;
 	}
 
-/** Método para retorno do tipo de receita.
- * 
- * @return TipoDespesa - Tipo da receita realizada (salário,, presente, prêmio ou outros).
- * 
- */
+	/** Método para retorno do tipo de receita.
+	 * 
+	 * @return TipoDespesa - Tipo da receita realizada (salário,, presente, prêmio ou outros).
+	 * 
+	 */
 	public TipoReceita getTipoReceita() {
 		return tipoReceita;
 	}	
-	
 	public void setTipoReceita(TipoReceita tipoReceita) {
 		this.tipoReceita = tipoReceita;
 	}

@@ -1,6 +1,6 @@
 package com.michelkonig.desafiopubf.enumeration;
 
-/** Classe TipoDespesa, onde constam os tipos de despesas que podem existir.
+/** Enum TipoDespesa, onde constam os tipos de despesas que podem existir.
  * 
  * @author Michel Konig
  *

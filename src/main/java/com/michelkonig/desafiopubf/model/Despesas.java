@@ -23,15 +23,15 @@ import com.michelkonig.desafiopubf.enumeration.TipoDespesa;
 
 public class Despesas {
 
-/**	Parâmetros que compõem a Classe Despesas:
- * 	
- * @param valorDespesa double - Valor da despesa;
- * @param dataPagamento date - Data de pagamento realizado referente a despesa;
- * @param dataPagamentoEsperado date - Data limite de pagamento esperado referente a despesa; 
- * @param conta Conta - Conta na qual a despesa está vinculada;
- * @param tipoDespesa TipoDespesa - Tipo de despesa paga.
- * 
- */
+	/**	Parâmetros que compõem a Classe Despesas:
+	 * 	
+	 * @param valorDespesa double - Valor da despesa;
+	 * @param dataPagamento date - Data de pagamento realizado referente a despesa;
+	 * @param dataPagamentoEsperado date - Data limite de pagamento esperado referente a despesa; 
+	 * @param conta Conta - Conta na qual a despesa está vinculada;
+	 * @param tipoDespesa TipoDespesa - Tipo de despesa paga.
+	 * 
+	 */
 	public Despesas(Double valorDespesa, Date dataPagamento, Date dataPagamentoEsperado, Conta conta,
 			TipoDespesa tipoDespesa) {
 		this.valorDespesa = valorDespesa;
@@ -57,11 +57,11 @@ public class Despesas {
 	
 	private TipoDespesa tipoDespesa;
 
-/** Método para retorno do valorDespesa da despesa.
- * 
- * @return Double - O valorDespesa referente a despesa.
- * 
- */
+	/** Método para retorno do valorDespesa da despesa.
+	 * 
+	 * @return Double - O valorDespesa referente a despesa.
+	 * 
+	 */
 	public Double getValorDespesa() {
 		return valorDespesa;
 	}
@@ -69,11 +69,11 @@ public class Despesas {
 		this.valorDespesa = valorDespesa;
 	}
 
-/** Método para retorno da data de pagamento da despesa.
- * 
- * @return date - A data em que foi feito o pagamente da referida despesa.
- * 
- */
+	/** Método para retorno da data de pagamento da despesa.
+	 * 
+	 * @return date - A data em que foi feito o pagamente da referida despesa.
+	 * 
+	 */
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone="Europe/Ireland")
 	public Date getDataPagamento() {
 		return dataPagamento;
@@ -82,11 +82,11 @@ public class Despesas {
 		this.dataPagamento = dataPagamento;
 	}
 
-/** Método para retorno da data de pagamento esperado da despesa.
- * 
- * @return date - A data de pagamente esperada para a referida despesa (data de vencimento).
- * 
- */
+	/** Método para retorno da data de pagamento esperado da despesa.
+	 * 
+	 * @return date - A data de pagamente esperada para a referida despesa (data de vencimento).
+	 * 
+	 */
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone="Europe/Ireland")
 	public Date getDataPagamentoEsperado() {
 		return dataPagamentoEsperado;
@@ -95,11 +95,11 @@ public class Despesas {
 		this.dataPagamentoEsperado = dataPagamentoEsperado;
 	}
 
-/** Método para retorno da conta.
- * 
- * @return Conta - Conta na qual a despesa está vinculada.
- * 
- */
+	/** Método para retorno da conta.
+	 * 
+	 * @return Conta - Conta na qual a despesa está vinculada.
+	 * 
+	 */
 	public Conta getConta() {
 		return conta;
 	}	
@@ -107,11 +107,11 @@ public class Despesas {
 		this.conta = conta;
 	}
 	
-/** Método para retorno do tipo de despesa.
- * 
- * @return TipoDespesa - Tipo da despesa realizada (alimentação, educação, lazer, moradia, roupa, saúde, transporte ou outros).
- * 
- */
+	/** Método para retorno do tipo de despesa.
+	 * 
+	 * @return TipoDespesa - Tipo da despesa realizada (alimentação, educação, lazer, moradia, roupa, saúde, transporte ou outros).
+	 * 
+	 */
 	public TipoDespesa getTipoDespesa() {
 		return tipoDespesa;
 	}	

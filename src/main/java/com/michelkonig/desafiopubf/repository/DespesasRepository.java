@@ -15,7 +15,7 @@ import com.michelkonig.desafiopubf.model.Despesas;
 @Repository
 @Transactional
 
-/** Classe DespesasRepository.
+/** Classe Repository da entidade Despesas	.
  * 
  * @author Michel Konig
  *

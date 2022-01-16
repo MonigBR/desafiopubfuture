@@ -21,16 +21,16 @@ import com.michelkonig.desafiopubf.enumeration.TipoConta;
 @Table(name = "Conta")
 public class Conta {
 
-/**	Parâmetros que compõem a Classe Conta:
- * 
- * @param id long - Identificação da conta;
- * @param saldo double - Valor do sando em conta;
- * @param tipoConta TipoConta - Tipo de conta que o usuário possui;
- * @param instituicaoFinanceira String - Instituição financeira a qual a conta do usuário está vinculada;
- * @param receitas List - Lista de receiras presentes na conta do usuário;
- * @param despesas List - Lista de despesas presentes na conta do usuário.
- * 
- */
+	/**	Parâmetros que compõem a Classe Conta:
+	 * 
+	 * @param id long - Identificação da conta;
+	 * @param saldo double - Valor do sando em conta;
+	 * @param tipoConta TipoConta - Tipo de conta que o usuário possui;
+	 * @param instituicaoFinanceira String - Instituição financeira a qual a conta do usuário está vinculada;
+	 * @param receitas List - Lista de receiras presentes na conta do usuário;
+	 * @param despesas List - Lista de despesas presentes na conta do usuário.
+	 * 
+	 */
 	public Conta(Double saldo, TipoConta tipoConta, String instituicaoFinanceira, List<Receitas> valorReceitas,
 			List<Despesas> valorDespesas) {
 		this.saldo = saldo;
@@ -57,11 +57,11 @@ public class Conta {
 	@OneToMany(mappedBy= "conta", cascade= CascadeType.ALL)
 	private List<Despesas> valorDespesas;
 
-/** Método para retorno de saldo da conta.
- * 
- * @return Double - O saldo em conta do usuário.
- * 
- */
+	/** Método para retorno de saldo da conta.
+	 * 
+	 * @return Double - O saldo em conta do usuário.
+	 * 
+	 */
 	public Double getSaldo() {
 		return saldo;
 	}
@@ -69,11 +69,11 @@ public class Conta {
 		this.saldo = saldo;
 	}
 	
-/** Método para retorno de tipo de conta.
- * 	
- * @return TipoConta - O tipo da conta do usuário (carteira, corrente ou poupança).
- * 
- */
+	/** Método para retorno de tipo de conta.
+	 * 	
+	 * @return TipoConta - O tipo da conta do usuário (carteira, corrente ou poupança).
+	 * 
+	 */
 	public TipoConta getTipoConta() {
 		return tipoConta;
 	}
@@ -81,11 +81,11 @@ public class Conta {
 		this.tipoConta = tipoConta;
 	}
 
-/** Método para retorno da instituição financeira.
- * 	
- * @return String - A instituição financeira ao qual pertence a conta do usuário.
- *  
- */
+	/** Método para retorno da instituição financeira.
+	 * 	
+	 * @return String - A instituição financeira ao qual pertence a conta do usuário.
+	 *  
+	 */
 	public String getInstituicaoFinanceira() {
 		return instituicaoFinanceira;
 	}
@@ -93,11 +93,11 @@ public class Conta {
 		this.instituicaoFinanceira = instituicaoFinanceira;
 	}
 
-/** Método para retorno da lista de receitas creditadas na conta.
-* 	
-* @return List - Uma lista com as receitas creditadas na conta do usuário.
-*  
-*/	
+	/** Método para retorno da lista de receitas creditadas na conta.
+	* 	
+	* @return List - Uma lista com as receitas creditadas na conta do usuário.
+	*  
+	*/	
 	public List<Receitas> getValorReceitas() {
 		return valorReceitas;
 	}
@@ -105,11 +105,11 @@ public class Conta {
 		this.valorReceitas = valorReceitas;
 	}
 
-/** Método para retorno da lista de despesas debitadas da conta.
-* 	
-* @return List - Uma lista com as despesas debitadas da conta do usuário.
-*  
-*/	
+	/** Método para retorno da lista de despesas debitadas da conta.
+	* 	
+	* @return List - Uma lista com as despesas debitadas da conta do usuário.
+	*  
+	*/	
 	public List<Despesas> getValorDespesas() {
 		return valorDespesas;
 	}

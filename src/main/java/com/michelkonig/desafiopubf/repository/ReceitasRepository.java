@@ -15,7 +15,7 @@ import com.michelkonig.desafiopubf.model.Receitas;
 @Repository
 @Transactional
 
-/** Classe ReceitasRepository.
+/** Classe Repository da entidade Receitas.
  * 
  * @author Michel Konig
  *

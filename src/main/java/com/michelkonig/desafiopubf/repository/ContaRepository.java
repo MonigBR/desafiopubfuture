@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.michelkonig.desafiopubf.model.Conta;
 
-/** Classe ContaRepository.
+/** Classe Repository da entidade Conta.
  * 
  * @author Michel Konig
  *

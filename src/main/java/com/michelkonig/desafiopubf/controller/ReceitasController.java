@@ -24,12 +24,7 @@ import com.michelkonig.desafiopubf.repository.ReceitasRepository;
  */
 @RestController
 public class ReceitasController {
-	
-/** Parâmetros que compõem a Classe ContaController:
- * 	
- * @param repository ReceitasRepository - Repositório de receitas.
- * 
- */
+
 	public ReceitasController(ReceitasRepository repository, ContaRepository contaRepository) {
 		this.repository = repository;
 		this.contaRepository = contaRepository;
@@ -38,28 +33,16 @@ public class ReceitasController {
 	ReceitasRepository repository;
 	ContaRepository contaRepository;
 
-		
-/**
- * 	
- * @return
- * 
- */
 	@GetMapping("/receitas")
 	public List<Receitas> getAllReceitas(){
 		return (List<Receitas>) repository.findAll();
 	}
-	
-/**
- * 	
- * @param id
- * @return
- * 
- */
+
 	@GetMapping("/receitas/{id}")
 	public Receitas getReceitasById(@PathVariable Long id) {
 		return repository.findById(id).get();
 	}
-	
+
 	@DeleteMapping("/receitas/{id}")
 	public void deleteReceitas(@PathVariable Long id){
 		repository.deleteById(id);
@@ -78,11 +61,22 @@ public class ReceitasController {
 		return repository.save(receitas);
 	}
 	
+	/** Método para buscar as receitas pelo Tipo de receita
+	 * 
+	 * @param tipoReceita - enum TipoReceita
+	 * @return lista de receitas pelo tipo de receitas
+	 */
 	@GetMapping("/receitas/buscarPorTipoReceita")
 	public List<Receitas> findReceitaByTipoReceita(@RequestParam("tipoReceita") TipoReceita tipoReceita){
 		return this.repository.findByTipoReceita(tipoReceita);
 	}
 	
+	/** Método para buscar receitas pela data de recebimento
+	 * 
+	 * @param dataInicial - objetos Receitas
+	 * @param dataFinal - objeto Receitas
+	 * @return lista de receitas filtras pela data de recebimento
+	 */
 	@GetMapping("/receitas/buscarDataRecebimentoPorPeriodo")
 	public List<Receitas> findReceitaByPeriodoDataRecebimento(
 			@RequestParam("dataInicial") @DateTimeFormat(pattern = "dd-MM-yyyy") Date dataInicial,
@@ -90,6 +84,12 @@ public class ReceitasController {
 		return this.repository.findByDataRecebimentoBetween(dataInicial, dataFinal);
 	}
 	
+	/** Método para buscar receitas pela data de recebimento esperado
+	 * 
+	 * @param dataInicial - objeto Receitas
+	 * @param dataFinal - objeto Receitas
+	 * @return lista de receitas filtras pela data de recebimento esperado
+	 */
 	@GetMapping("/receitas/buscarDataRecebimentoEsperadoPorPeriodo")
 	public List<Receitas> findReceitaByPeriodoDataRecebimentoEsperado(
 			@RequestParam("dataInicial") @DateTimeFormat(pattern = "dd-MM-yyyy") Date dataInicial,
@@ -97,6 +97,11 @@ public class ReceitasController {
 		return this.repository.findByDataRecebimentoEsperadoBetween(dataInicial, dataFinal);
 	}
 
+	/** Método para a buscar o saldo total das receitas de uma conta
+	 * 
+	 * @param id_Conta - id da conta
+	 * @return total de receitas da conta
+	 */
 	@GetMapping("/receitas/buscarTotalReceitasDeUmaConta")
 	public Double findByTotalReceitasDeUmaConta(@RequestParam("id_conta") Long id_Conta) {	
 		Conta conta = this.contaRepository.findById(id_Conta).get();
