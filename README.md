@@ -67,31 +67,45 @@ _Abaixo são listadas as entidades que compõem o projeto_
 * POST - Cadastrar uma conta
 	- Caminho: "/conta"
 	- Body: objeto do tipo Conta (sem id)
+		Exemplo: 
+		{
+			"saldo": 100.0,
+			"tipoConta": 2,
+			"instituicaoFinanceira": "Banco A"
+		}
 	- Retorno: conta criada
-	
+
  * GET - Procurar por uma conta cadastrada por id
 	- Caminho: "/conta/{id}"
 	- PathVariable: id do tipo Long
 	- Retorno: conta criada
 		
-* GET - Procurar por todas conta cadastrada por id
+* GET - Procurar por todas as contas cadastradas
 	- Caminho: "/conta"
 	- Retorno: lista de contas criadas
 		
 * DELETE - Deletar uma conta
 	- Caminho: "/conta/{id}"
-	- PathVariable: id no tipo Long
+	- PathVariable: id do tipo Long
 		
 * PUT - Atualizar as informações de uma conta
 	- Caminho: "/conta/{id}"
 	- PathVariable: id do tipo Long
 	- Body: objeto do tipo Conta (sem id)
+		Exemplo: 
+		{
+			"saldo": 200.0,
+			"tipoConta": 1,
+			"instituicaoFinanceira": "Banco B"
+		}
 	- Retorno: conta atualizada	
 		
-* GET - Buscar total de uma conta
+* GET - Buscar saldo total de uma conta
 	- Caminho: "/conta/buscarTotalSaldoDeUmaConta"
 	- Param: ("id_conta") id da conta do tipo Long 
-	- Retorno: total da conta
+		Exemplo: 
+		"id_conta": 1
+	- Retorno: saldo total da conta
 ~~~
 		
 ##### Entidade Receitas
@@ -100,6 +114,14 @@ _Abaixo são listadas as entidades que compõem o projeto_
 	- Caminho: "/conta/{id}/receitas"
 	- PathVariable: id da conta do tipo Long
 	- Body: objeto do tipo Receita (sem id)
+		Exemplo: 
+		{
+			"valorReceita": 50.0,
+			"dataRecebimento": "05-07-2022",
+			"dataRecebimentoEsperado": "07-07-2022",
+			"descricao": "Aumento",
+   			"tipoReceita": "2"
+		}	
 	- Retorno: receita criada
 		
 * GET - Procurar por uma receita cadastrada por id
@@ -107,7 +129,7 @@ _Abaixo são listadas as entidades que compõem o projeto_
 	- PathVariable: id do tipo Long
 	- Retorno: receita criada
 		
-* GET - Procurar por todas receitas cadastrada por id
+* GET - Procurar por todas receitas cadastradas
 	- Caminho: "/receitas"
 	- Retorno: lista de receitas criadas
 		
@@ -119,28 +141,48 @@ _Abaixo são listadas as entidades que compõem o projeto_
 	- Caminho: "/receita/{id}"
 	- PathVariable: id do tipo Long
 	- Body: objeto do tipo Receitas (sem id)
-	- Retorno: receitas atualizadas	
+		Exemplo: 
+		{
+			"valorReceita": 100.0,
+			"dataRecebimento": "05-06-2022",
+			"dataRecebimentoEsperado": "07-06-2022",
+			"descricao": "Aumento",
+   			"tipoReceita": "1"
+		}		
+	- Retorno: receita atualizada	
 
 * GET - Buscar receitas pelo Tipo de Receita
 	- Caminho: "/receitas/buscarPorTipoReceita"
 	- Param: ("tipoReceita") filtro de busca no tipo TipoReceita 
-	- Retorno: lista o total da receitas pelo tipo dela
+		Exemplo: 
+		"tipoReceita": PREMIO	
+	- Retorno: lista de receitas filtradas pelo tipo de receita
 
 * GET - Buscar pelas datas de recebimento das receitas de uma conta
 	- Caminho: "/receitas/buscarDataRecebimentoPorPeriodo"
 	- Param: ("dataInicial") filtro de busca no formato da data "dd-MM-yyyy"
+		Exemplo: 
+		"dataInicial": 11-10-2020
 	- Param: ("dataFinal") filtro de busca no formato da data "dd-MM-yyyy" 
-	- Retorno: lista de recebimento de receitas dentro do período informado
+		Exemplo: 
+		"dataFinal": 15-10-2020
+	- Retorno: lista de receitas com data de recebimento dentro do período informado
 		
 * GET - Buscar pelas datas de recebimento esperado das receitas de uma conta
 	- Caminho: "/receitas/buscarDataRecebimentoEsperadoPorPeriodo"
 	- Param: ("dataInicial") filtro de busca no formato da data "dd-MM-yyyy"
+		Exemplo: 
+		"dataInicial": 11-11-2022
 	- Param: ("dataFinal") filtro de busca no formato da data "dd-MM-yyyy"
-	- Retorno: lista de recebimento de receitas esperadas dentro do período informado
+		Exemplo: 
+		"dataFinal": 15-11-2022
+	- Retorno: lista de receitas com data de recebimento esperado dentro do período informado
 					
 * GET - Buscar total de receitas de uma conta
 	- Caminho: "/receitas/buscarTotalReceitasDeUmaConta"
 	- Param: ("id_conta") id da conta no tipo Long 
+		Exemplo:
+		"id_conta": 1
 	- Retorno: total das receitas de uma conta
 ~~~
 	
@@ -150,6 +192,12 @@ _Abaixo são listadas as entidades que compõem o projeto_
 	- Caminho: "/conta/{id}/despesas"
 	- PathVariable: id da conta do tipo Long
 	- Body: objeto do tipo Despesa (sem id)
+		{
+			"valorDespesa": 90.0,
+        		"dataPagamento": "05-08-2020",
+        		"dataPagamentoEsperado": "10-08-2020",
+        		"tipoDespesa": "MORADIA"
+		}	
 	- Retorno: despesa criada
 		
 * GET - Procurar por uma despesa cadastrada por id
@@ -157,7 +205,7 @@ _Abaixo são listadas as entidades que compõem o projeto_
 	- PathVariable: id do tipo Long
 	- Retorno: despesa criada
 		
-* GET - Procurar por todas despesas cadastrada por id
+* GET - Procurar por todas despesas cadastradas
 	- Caminho: "/despesas"
 	- Retorno: lista de despesas criadas
 		
@@ -169,39 +217,58 @@ _Abaixo são listadas as entidades que compõem o projeto_
 	- Caminho: "/despesas/{id}"
 	- PathVariable: id do tipo Long
 	- Body: objeto do tipo Despesas (sem id)
-	- Retorno: despesas atualizadas	
+		Exemplo:
+		{
+			"valorDespesa": 45.0,
+        		"dataPagamento": "01-08-2020",
+        		"dataPagamentoEsperado": "15-08-2020",
+        		"tipoDespesa": "MORADIA"
+		}
+	- Retorno: despesa atualizada
 
 * GET - Buscar despesas pelo Tipo de Despesa
 	- Caminho: "/despesas/buscarPorTipoDespesa"
 	- Param: ("tipoDespesa") filtro de busca no tipo TipoDespesa 
-	- Retorno: lista o total da despesas pelo tipo dela
+		Exemplo: 
+		"tipoDespesaa": LAZER	
+	- Retorno: lista de despesas filtradas pelo tipo de despesa
 
 * GET - Buscar pelas datas de pagamento das despesas de uma conta
 	- Caminho: "/despesas/buscarDataPagamentoPorPeriodo"
 	- Param: ("dataInicial") filtro de busca no formato da data "dd-MM-yyyy"
+		Exemplo: 
+		"dataInicial": 20-11-2022	
 	- Param: ("dataFinal") filtro de busca no formato da data "dd-MM-yyyy" 
-	- Retorno: lista de despesas dentro do período informado
+		Exemplo: 
+		"dataFinal": 25-12-2022	
+	- Retorno: lista de despesas com data de pagamento dentro do período informado
 		
 * GET - Buscar pelas datas de pagamento esperado das despesas de uma conta
 	- Caminho: "/despesas/buscarDataPagamentoEsperadoPorPeriodo"
 	- Param: ("dataInicial") filtro de busca no formato da data "dd-MM-yyyy"
-	- Param: ("dataFinal") filtro de busca no formato da data "dd-MM-yyyy"
-	- Retorno: lista de despesas dentro do período informado
+		Exemplo: 
+		"dataInicial": 25-11-2022	
+	- Param: ("dataFinal") filtro de busca no formato da data "dd-MM-yyyy"	
+		Exemplo: 
+		"dataFinal": 25-12-2022
+	- Retorno: lista de despesas com data de pagamento esperado dentro do período informado
 				
 * GET - Buscar total de despesas de uma conta
 	- Caminho: "/despesas/buscarTotalDespesasDeUmaConta"
 	- Param: ("id_conta") id da conta no tipo Long 
+		Exemplo:
+		"id_conta": 1	
 	- Retorno: total das despesas de uma conta
 ~~~
 		
-#### **OUTRAS** **INFORMAÇÕES**		
+#### **OUTRAS INFORMAÇÕES**		
 As tratativas de erros não foram implementadas;
 
 Uma API de Transferência de Saldo entre contas não foi implementada;
 
 Os testes unitários não foram realizados, pois ainda não possuo conhecimentos a respeito.
 	
-##### **SOBRE** **O** **DESAFIO**
+##### **SOBRE O DESAFIO**
 O projeto foi desenvolvido com base em video-aulas e curso em plataforma de Ensino Online realizados/assistidos desde o início do processo seletivo.
 Como a estrutura de projeto baseado em REST API era desejável, os materiais de estudo utilizados foram focados principalmente nesse tópico. 
 Apesar do uso de frameworks avançados, tais como SpringBoot, destaco aqui meu início nos estudos da linguagem Java e, como consequência, observa-se minhas limitações ainda existentes refletidas no projeto, conforme mencionadas no tópico anterior.
