@@ -11,6 +11,10 @@ Para a execução do programa
 	```
 	mvnw spring-boot:run
 	```
+	ou
+	```
+	mvn spring-boot:run
+	```
 - Com o serviço rodando, um arquivo de banco de dados `h2database.mv` será gerado. Para acessá-lo (http://localhost:8080/h2-console), utilize as informações:
 	- Driver Class: org.h2.Driver
 	- JDBC URL: jdbc:h2:file:./h2database
