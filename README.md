@@ -1,17 +1,17 @@
-##GESTÃO DE CONTROLE DE FINANÇAS PESSOAIS
+## GESTÃO DE CONTROLE DE FINANÇAS PESSOAIS
 Programa desenvolvido em linguagem Java para a gestão de controle de finanças pessoais. Desta forma, o programa é responsável pelo cadastro, edição, remoção e consulta de contas, bem como, as receitas e despesas existentes nas mesmas.
 
-####INSTALAÇÃO E EXECUÇÃO
+#### INSTALAÇÃO E EXECUÇÃO
 Para execução do código, é necessário a instalação do [JDK 11.0.13](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html) e as dependências do projeto pelo [Maven](https://maven.apache.org/install.html) conforme descrito na sua documentação oficial.
 
 
 Para a execução do programa 
-- Descompacte o arquivo desafiopubfuture-main.zip localmente
+- Descompacte o arquivo `desafiopubfuture-main.zip` localmente
 - No Prompt de Comando aberto nesse diretório, execute o comando para executar a aplicação:
 	```
 	mvnw spring-boot:run
 	```
-- Com o serviço rodando, um arquivo de banco de dados (h2database.mv) será gerado. Para acessá-lo (http://localhost:8080/h2-console), utilize as informações:
+- Com o serviço rodando, um arquivo de banco de dados `h2database.mv` será gerado. Para acessá-lo (http://localhost:8080/h2-console), utilize as informações:
 	- Driver Class: org.h2.Driver
 	- JDBC URL: jdbc:h2:file:./h2database
 	- Username: desafio
@@ -19,10 +19,7 @@ Para a execução do programa
 	
 - Para realizar as chamadas das API no formato HTTP (GET, POST, PUT, DELETE), utilize alguma ferramenta auxiliar tal como [Postman](https://www.postman.com).
 
-
-
-
-####TECNOLOGIAS
+#### TECNOLOGIAS
 As seguintes ferramentas foram usadas na construção do projeto:
 - Java
 - Maven
@@ -32,17 +29,17 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Git/GitHub](https://github.com)
 - Banco de dados H2
 
-####DOCUMENTAÇÃO DO SISTEMA
+#### DOCUMENTAÇÃO DO SISTEMA
 
 _Abaixo são listadas as entidades que compõem o projeto_
 
-#####Conta
+##### Conta
 	* id: identificador único (autogerado);
 	* saldo: considerado como saldo inicial da conta no momento de seu cadastro (ou seja, valor fixo);
 	* tipoConta: classificação da conta, podendo ser: Carteira, Conta Corrente ou Poupança;
 	* instituicaoFinanceira: nome da instituição de vínculo da conta. 
 	
-#####Despesas
+##### Despesas
 	* id: identificador único (autogerado);
 	* valorDespesa: valor referente a despesa;
 	* dataPagamento: data do pagamento;
@@ -50,7 +47,7 @@ _Abaixo são listadas as entidades que compõem o projeto_
 	* tipoDespesa: classificação da despesa, podendo ser: Alimentação, Educação, Lazer, Moradia, Roupa, Saúde, Transporte ou Outros;
 	* conta: conta a qual a despesa está registrada, vinculada no banco de dados pelo ID. 
 				
-#####Receitas
+##### Receitas
 	* id: identificador único (autogerado);
 	* valorReceita: valor referente a receita;
 	* descricao: pequena descrição da receita;
@@ -59,7 +56,7 @@ _Abaixo são listadas as entidades que compõem o projeto_
 	* tipoReceita: classificação da receita, podendo ser: Salário, Presente, Prêmio ou Outros;
 	* conta: conta a qual a receita está registrada, vinculada no banco de dados pelo ID. 	
 
-####_Chamadas da Rest API_
+#### _Chamadas da Rest API_
 
 ##### Entidade Conta
 ~~~
