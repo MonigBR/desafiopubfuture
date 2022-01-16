@@ -143,8 +143,7 @@ public class ContaController {
 		Double totalSaldo = conta.getSaldo() + totalReceitas - totalDespesas;
 		
 		return totalSaldo;
-	}
-	
-	
+		
+		}
 	
 }

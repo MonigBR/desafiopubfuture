@@ -67,7 +67,7 @@ public class DespesasController {
 	}
 	
 	@PutMapping("/despesas/{id}")
-	public Despesas updaterDespesas(@PathVariable Long id, @RequestBody Despesas despesasDetalhes) {
+	public Despesas updateDespesas(@PathVariable Long id, @RequestBody Despesas despesasDetalhes) {
 		Despesas despesas = repository.findById(id).get(); 
 			
 		despesas.setDataPagamento(despesasDetalhes.getDataPagamento());
