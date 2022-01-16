@@ -66,7 +66,7 @@ public class ReceitasController {
 	}
 	
 	@PutMapping("/receitas/{id}")
-	public Receitas updaterReceitas(@PathVariable Long id, @RequestBody Receitas receitasDetalhes) {
+	public Receitas updateReceitas(@PathVariable Long id, @RequestBody Receitas receitasDetalhes) {
 		Receitas receitas = repository.findById(id).get(); 
 			
 		receitas.setDataRecebimento(receitasDetalhes.getDataRecebimento());
@@ -111,6 +111,7 @@ public class ReceitasController {
 		
 		return totalReceitas;
 	}
+	
 	
 	
 			

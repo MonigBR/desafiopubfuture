@@ -31,10 +31,8 @@ public class Conta {
  * @param despesas List - Lista de despesas presentes na conta do usuário.
  * 
  */
-	public Conta(Long id, Double saldo, TipoConta tipoConta, String instituicaoFinanceira, List<Receitas> valorReceitas,
+	public Conta(Double saldo, TipoConta tipoConta, String instituicaoFinanceira, List<Receitas> valorReceitas,
 			List<Despesas> valorDespesas) {
-
-		this.id = id;
 		this.saldo = saldo;
 		this.tipoConta = tipoConta;
 		this.instituicaoFinanceira = instituicaoFinanceira;
@@ -119,7 +117,8 @@ public class Conta {
 		this.valorDespesas = valorDespesas;
 	}
 
-	
-
+	public Long getId() {
+		return id;
+	}
 
 }

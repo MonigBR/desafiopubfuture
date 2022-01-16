@@ -130,7 +130,13 @@ public class Receitas {
 	public TipoReceita getTipoReceita() {
 		return tipoReceita;
 	}	
+	
 	public void setTipoReceita(TipoReceita tipoReceita) {
 		this.tipoReceita = tipoReceita;
 	}
+
+	public Long getId() {
+		return id;
+	}
+	
 }

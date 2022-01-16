@@ -118,4 +118,9 @@ public class Despesas {
 	public void setTipoDespesa(TipoDespesa tipoDespesa) {
 		this.tipoDespesa = tipoDespesa;
 	}
+
+	public Long getId() {
+		return id;
+	}
+	
 }
